@@ -56,3 +56,7 @@ Upload both PDFs and click **Compare PDFs**. The app reads selectable text local
 ### Level filtering (experimental)
 
 The app attempts to detect level identifiers from selectable shop drawing title text, e.g. `LEVEL 3 ERECTION PLAN`, and asks the reviewer to confirm the detected level. Comparison is limited to pages with a recognized matching level title in **both** PDFs; unrecognized pages are excluded, not silently assigned. Multiple levels require explicit selection. This is **not** gridline geometry matching, member-location comparison, or OCR. Drawing titles in graphical title blocks may not be extractable.
+
+### Shop drawing structural references
+
+For selectable-text shop drawings with notes such as `STRUCTURAL DRAWING REFERENCE - S1.1.R.B & S1.1.R.E`, the app extracts multiple S-series structural sheet references and lists possible matching pages in the structural PDF. Design PDF page identification is conservative: only pages with a single unique S-series token are matched, and missing/ambiguous matches require manual review. This does not yet automatically align framing geometry or verify gridline positions. Reference extraction can fail when PDF text is split or rasterized.
