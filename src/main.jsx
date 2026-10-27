@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import{createRoot}from'react-dom/client';
 import{Document,Page,pdfjs}from'react-pdf';
-import workerUrl from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
+import workerUrl from 'react-pdf/node_modules/pdfjs-dist/build/pdf.worker.min.mjs?url';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
 import './style.css';
