@@ -15,8 +15,8 @@ npm run build
 1. Upload structural drawings and steel shop drawings.
 2. Navigate both PDF viewers independently.
 3. Click **Analyze PDFs** to extract selectable text from the first 120 pages of each file. Large submittals are deliberately capped for responsiveness.
-4. The app groups recognized shop erection plans by level and attempts to pair corresponding structural pages automatically. Select a detected level to inspect its findings.
-5. No manual PDF page entry is required. Only same-level automatically paired pages are compared; unpaired pages are excluded and flagged for review.
+4. The app groups recognized shop erection plans by level and attempts to pair corresponding structural pages automatically. The app displays candidate findings for every detected level automatically, with no level selection.
+5. No manual level selection or PDF page entry is required. Only same-level automatically paired pages are compared; unpaired pages are excluded and flagged for review.
 6. Review candidate steel section occurrences and grid text for each detected level, then draft manual comments with PDF page references.
 7. Export comments to CSV.
 
