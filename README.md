@@ -15,9 +15,9 @@ npm run build
 1. Upload structural drawings and steel shop drawings.
 2. Navigate both PDF viewers independently.
 3. Click **Analyze PDFs** to extract selectable text from the first 120 pages of each file. Large submittals are deliberately capped for responsiveness.
-4. Review detected shop erection-plan titles and structural references. Select the level manually when not detected.
-5. **Enter structural and shop PDF page ranges manually** (for example `7,12-15`). Only those pages are compared; the app never compares all levels by default.
-6. Review candidate steel section occurrences and grid text, then draft manual comments with PDF page references.
+4. The app groups recognized shop erection plans by level and attempts to pair corresponding structural pages automatically. Select a detected level to inspect its findings.
+5. No manual PDF page entry is required. Only same-level automatically paired pages are compared; unpaired pages are excluded and flagged for review.
+6. Review candidate steel section occurrences and grid text for each detected level, then draft manual comments with PDF page references.
 7. Export comments to CSV.
 
 ## Supported detection
@@ -30,7 +30,7 @@ npm run build
 
 ## Engineering limitations
 
-**This MVP does not geometrically align grids or verify that an individual beam occupies the correct span.** Shapes and grid strings are extracted independently. "In both selections" does not mean an individual member matches. Missing shapes are candidates, not verified discrepancies. Scanned drawings may require OCR. Fabrication pages may not contain floor titles; use explicit PDF page selection. Only the first 120 pages are analyzed, so for 1,425-page shop submittals use smaller PDFs containing the relevant erection plans or a future chunked scan feature.
+**This MVP does not geometrically align grids or verify that an individual beam occupies the correct span.** Shapes and grid strings are extracted independently. "In both selections" does not mean an individual member matches. Missing shapes are candidates, not verified discrepancies. Scanned drawings may require OCR. Fabrication pages may not contain floor titles and cannot be automatically assigned to a level; they are excluded from the automatic comparison. Only the first 120 pages are analyzed, so for 1,425-page shop submittals use smaller PDFs containing the relevant erection plans or a future chunked scan feature.
 
 No structural approval is automated. Engineer confirmation is required for all findings. PDFs stay in the browser. Comments are stored locally in browser localStorage and are not shared or backed up except by CSV export. Clearing browser data may delete comments.
 
