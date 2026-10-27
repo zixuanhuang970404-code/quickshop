@@ -46,3 +46,9 @@ The Vite base path is `/quickshop/`. The GitHub Actions workflow deploys on push
 4. Visit https://zixuanhuang970404-code.github.io/quickshop/ .
 
 The app is a public static website, but selected PDFs are processed locally in the browser. Avoid committing confidential drawings or review data to this public repository.
+
+## Phase 2: candidate steel section comparison
+
+Upload both PDFs and click **Compare PDFs**. The app reads selectable text locally using PDF.js, extracts candidate W, S, M, HP, HSS, C and MC section sizes, and shows which sizes occur in both PDFs or only one. Results include PDF page references. Click **Review pages** to navigate to a candidate and prefill a manual review comment; you must click **Add comment** to save it.
+
+**Limitations:** This is text-only matching, not OCR, drawing geometry recognition, member mark matching or automatic validation. Sections listed as design-only or shop-only are candidates, **not verified discrepancies**. Scanned drawings may return no results. All engineering decisions require manual verification.
