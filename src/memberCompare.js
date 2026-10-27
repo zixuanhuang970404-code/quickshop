@@ -1,5 +1,6 @@
 import {pdfjs} from 'react-pdf';
 import {detectLevel,titleCandidate} from './levelDetection.js';
+import {structuralRefs,extractSheetId} from './sheetReferences.js';
 
 /** Candidate steel shapes found in selectable PDF text; not OCR or verified member assignments. */
 export const SHAPE_RE = /\b(?:W|S|M|HP)\s*\d{1,2}(?:\.\d+)?\s*[X×]\s*\d{1,3}(?:\.\d+)?\b|\bHSS\s*\d+(?:\.\d+)?\s*[X×]\s*\d+(?:\.\d+)?(?:\s*[X×]\s*(?:\d+\/\d+|\d+(?:\.\d+)?))?\b|\b(?:C|MC)\s*\d+(?:\.\d+)?\s*[X×]\s*\d+(?:\.\d+)?\b/gi;
@@ -22,7 +23,7 @@ export async function extractMembers(file,onProgress=()=>{}){
       pageLevels[pageNum]=detectLevel(candidate);
       const matches=[...text.matchAll(SHAPE_RE)];
       for(const match of matches) occurrences.push({shape:normalizeShape(match[0]),page:pageNum});
-      pageStats.push({page:pageNum,characters:text.trim().length,matches:matches.length,title:candidate,level:pageLevels[pageNum]});
+      pageStats.push({page:pageNum,characters:text.trim().length,matches:matches.length,title:candidate,level:pageLevels[pageNum],refs:structuralRefs(items.map(i=>i.str).join('\n')),sheetId:extractSheetId(items.map(i=>i.str).join('\n'))});
       onProgress(pageNum,doc.numPages);
       page.cleanup();
     }
