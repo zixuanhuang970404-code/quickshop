@@ -60,7 +60,3 @@ The app attempts to detect level identifiers from selectable shop drawing title 
 ### Shop drawing structural references
 
 For selectable-text shop drawings with notes such as `STRUCTURAL DRAWING REFERENCE - S1.1.R.B & S1.1.R.E`, the app extracts multiple S-series structural sheet references and lists possible matching pages in the structural PDF. Design PDF page identification is conservative: only pages with a single unique S-series token are matched, and missing/ambiguous matches require manual review. This does not yet automatically align framing geometry or verify gridline positions. Reference extraction can fail when PDF text is split or rasterized.
-
-### Structural index and fabrication candidate extraction
-
-The structural PDF's first page is scanned for drawing-index entries (e.g. `S1.1.R.B ROOF FRAMING PLAN - SECTOR B`). Shop pages expose candidate beam sizes, grid strings, and assembly-like marks. These are **unverified tokens**, not correlated members; the tool cannot yet certify a beam's location, framing level, or size. Very large PDFs may be slow because pages are currently read sequentially. The NVIDIA Starbase files were used to identify intended patterns, not to validate a full comparison.
