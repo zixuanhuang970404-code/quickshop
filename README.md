@@ -35,3 +35,14 @@ React 18, Vite 5, react-pdf 9, PDF.js 4.
 
 ## Next steps
 Sheet identification, on-page annotation, candidate member/connection mismatch detection, project storage, PDF report export.
+
+## GitHub Pages deployment
+
+The Vite base path is `/quickshop/`. The GitHub Actions workflow deploys on pushes to `main`.
+
+1. In repository **Settings → Pages**, set **Build and deployment → Source** to **GitHub Actions**.
+2. Review and merge pull request #1 into `main`.
+3. Open **Actions** and wait for the **Deploy Steel Review to GitHub Pages** workflow to succeed.
+4. Visit https://zixuanhuang970404-code.github.io/quickshop/ .
+
+The app is a public static website, but selected PDFs are processed locally in the browser. Avoid committing confidential drawings or review data to this public repository.
