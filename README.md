@@ -41,3 +41,7 @@ Merge the feature PR to `main`; the existing GitHub Actions Pages workflow build
 ## Validation
 
 Build and browser tests must be completed before merging. Test both text-based and scanned PDFs, plus manual page fallback.
+
+## Framing size mismatch focus
+
+Level, grid and sheet-reference information is used internally and is not presented as separate review findings. The main review area is reserved for verified member-size discrepancies. **The present MVP cannot identify the same physical member across PDFs**, so it currently reports zero *verified* mismatches rather than mislabeling unmatched shape occurrences as size errors. Geometry or unique member-mark correspondence is required before real mismatch detection can be implemented. This zero is **not** a passing review or proof of compliance.
