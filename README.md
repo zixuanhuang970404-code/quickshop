@@ -45,3 +45,7 @@ Build and browser tests must be completed before merging. Test both text-based a
 ## Framing size mismatch focus
 
 Level, grid and sheet-reference information is used internally and is not presented as separate review findings. The main review area is reserved for verified member-size discrepancies. **The present MVP cannot identify the same physical member across PDFs**, so it currently reports zero *verified* mismatches rather than mislabeling unmatched shape occurrences as size errors. Geometry or unique member-mark correspondence is required before real mismatch detection can be implemented. This zero is **not** a passing review or proof of compliance.
+
+## Background member location matching requirement
+
+Level, sector, structural sheet references, and gridline coordinates are **internal matching keys only**, not user-facing review categories. To declare a size mismatch, the engine must first establish that the structural and shop annotations refer to the same physical member at the same level and framing location. Compare section sizes only after that correspondence is established. Matching section names elsewhere on a floor is not sufficient. Show only confirmed candidate size mismatches with both PDF page references; unresolved location matches belong in an internal/manual-verification queue and must not be mislabeled. Current extraction does not implement geometric grid-to-member correspondence; this is a required future engine capability, not a claim that it works now.
