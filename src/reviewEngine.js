@@ -1,3 +1,4 @@
+import {extractMarkedMembers} from './memberMatch.js';
 import {pdfjs} from 'react-pdf';
 const SHAPE=/\b(?:W|S|M|HP|C|MC)\s*\d{1,2}(?:\.\d+)?\s*[X×]\s*\d{1,3}(?:\.\d+)?(?:_ESS)?\b|\bHSS\s*\d+(?:\.\d+)?\s*[X×]\s*\d+(?:\.\d+)?(?:\s*[X×]\s*(?:\d+\/\d+|\d+(?:\.\d+)?))?\b/gi;
 const SHEET=/\bS\s*\d+(?:\.\d+)+(?:\.[A-Z0-9]+)*\b/gi;
@@ -29,7 +30,7 @@ export async function scanPdf(file,{limit=80,onProgress=()=>{},signal}={}){
   for(let p=1;p<=n;p++){
    if(signal?.aborted)throw new Error('Analysis cancelled');
    const page=await doc.getPage(p),content=await page.getTextContent();
-   pages.push({page:p,...parsePageText(content.items)});
+   const parsed=parsePageText(content.items); const raw=content.items.map(i=>i.str||'').join('\n'); pages.push({page:p,...parsed,markedMembers:extractMarkedMembers(raw)});
    page.cleanup();onProgress(p,n,doc.numPages);
    if(p%4===0)await new Promise(resolve=>setTimeout(resolve,0));
   }
