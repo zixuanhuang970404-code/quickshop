@@ -52,3 +52,7 @@ The app is a public static website, but selected PDFs are processed locally in t
 Upload both PDFs and click **Compare PDFs**. The app reads selectable text locally using PDF.js, extracts candidate W, S, M, HP, HSS, C and MC section sizes, and shows which sizes occur in both PDFs or only one. Results include PDF page references. Click **Review pages** to navigate to a candidate and prefill a manual review comment; you must click **Add comment** to save it.
 
 **Limitations:** This is text-only matching, not OCR, drawing geometry recognition, member mark matching or automatic validation. Sections listed as design-only or shop-only are candidates, **not verified discrepancies**. Scanned drawings may return no results. All engineering decisions require manual verification.
+
+### Level filtering (experimental)
+
+The app attempts to detect level identifiers from selectable shop drawing title text, e.g. `LEVEL 3 ERECTION PLAN`, and asks the reviewer to confirm the detected level. Comparison is limited to pages with a recognized matching level title in **both** PDFs; unrecognized pages are excluded, not silently assigned. Multiple levels require explicit selection. This is **not** gridline geometry matching, member-location comparison, or OCR. Drawing titles in graphical title blocks may not be extractable.
